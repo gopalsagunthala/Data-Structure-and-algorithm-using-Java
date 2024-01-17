@@ -1,0 +1,37 @@
+You are given a binary string s (a string containing only "0" and "1"). You may choose up to one "0" and flip it to a "1". 
+What is the length of the longest substring achievable that contains only "1"?
+
+For example, given s = "1101100111", the answer is 5. If you perform the flip at index 2, the string becomes 1111100111.
+
+---------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+import java.util.*;
+public class test{
+    public static void main(String[] args){
+    Scanner sc =  new Scanner(System.in);
+    String str = sc.nextLine();
+    // int n = str.length;
+    // String[] arr = str.split("");
+    int l = 0; 
+    int c = 0;
+    int ans =0;
+    int k = 1;
+    for(int r=0; r<str.length(); r++){
+        if(str.charAt(r) == '0'){
+            c++;
+        }
+        while(c>k){
+            if(str.charAt(l) == '0'){
+                c--;
+            }
+            l++;
+        }
+        ans = Math.max(ans,r-l+1);
+        
+    }
+    System.out.print(ans);
+}
+}
