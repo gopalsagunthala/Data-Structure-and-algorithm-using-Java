@@ -1,1 +1,21 @@
+LEETCODE 713
 
+
+class Solution {
+    public int numSubarrayProductLessThanK(int[] nums, int k) {
+        int n = nums.length;
+        int left = 0;
+        int ans = 0;
+        int cur = 1;
+        for(int r = 0; r<n; r++){
+            cur  = cur * nums[r];
+            while(cur >= k && left <=r){
+                cur = cur / nums[left];
+                left++;
+            }
+            ans = ans +( r-left+1);
+            
+        }
+        return ans;
+    }
+}
