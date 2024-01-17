@@ -1,0 +1,59 @@
+Given a binary array nums and an integer k, return the maximum number of consecutive 1's in the array if you can flip at most k 0's.
+
+Example 1:
+
+Input:
+
+11
+
+1 1 1 0 0 0 1 1 1 1 0
+
+2
+
+Output:
+
+6
+
+Explanation:
+
+[1,1,1,0,0,1,1,1,1,1,1]
+
+Bolded numbers were flipped from 0 to 1. The longest subarray is underlined.
+-------------------------------------------------------------------------------------------------------------------------------------------
+
+import java.util.*;
+public class test{
+    public static void main(String args[]){
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int[] nums = new int[n];
+        for(int i=0; i<n; i++){
+            nums[i] = sc.nextInt();
+        }
+        
+        int k = sc.nextInt();
+        
+        int l = 0;
+        int c = 0;
+        int ans = 0;
+        // System.out.println(str);
+        for(int r = 0; r<n; r++){
+            // System.out.println("Sdf");
+            if(nums[r] == 0){
+                c++;
+                // System.out.print(ans);
+                
+            }
+            if(c>k){
+                if(nums[l] == 0){
+                    c--;
+                }
+                l++;
+            }
+            ans = r-l+1;
+            
+        }
+        System.out.print(ans);
+        
+    }
+}
